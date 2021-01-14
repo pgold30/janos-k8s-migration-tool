@@ -60,7 +60,8 @@ function validate {
   cat $FILE | kubeval --kubernetes-version $kubeversion
 }
 
-for file in $SEARCHPATH/*.yaml
+#for file in $SEARCHPATH/*.yaml
+for file in $(find $SEARCHPATH -name '*.yaml' -or '*.yml');
 do
   echo "1:Replacing all deprecated APIs for K8s 1.16..."
   replace_deprecated_apis $file
