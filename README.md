@@ -5,8 +5,8 @@ It performs the steps required for a migration from K8s 1.15 to 1.16
 therefore can validate schemas for multiple versions of Kubernetes.
 
 It has the following dependencies:
-[![Yq](https://circleci.com/gh/instrumenta/kubeval.svg?style=svg)](https://circleci.com/gh/instrumenta/kubeval)
-[![Kubeval](https://goreportcard.com/badge/github.com/instrumenta/kubeval)](https://goreportcard.com/report/github.com/instrumenta/kubeval)
+[Yq](https://github.com/mikefarah/yq)
+[Kubeval](https://github.com/instrumenta/kubeval)
 
 
 Janos performs 3 operations:
