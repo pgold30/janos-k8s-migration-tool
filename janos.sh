@@ -5,8 +5,10 @@
 
 #SEARCHPATH=$1
 echo "insert full path where yamls files exist"
-
 read SEARCHPATH
+
+echo "enter version of K8s for which you want to validate the yaml files(default 1.16.0)"
+read kubeversion
 
 usage () {
   local errorMessage=$1
@@ -55,13 +57,11 @@ function add_spec-selector () {
 
 function validate {
   FILE=$1
-  echo "enter version of K8s for which you want to validate the yaml files(default 1.16.0)"
-  read kubeversion
   cat $FILE | kubeval --kubernetes-version $kubeversion
 }
 
 #for file in $SEARCHPATH/*.yaml
-for file in $(find $SEARCHPATH -name '*.yaml' -or '*.yml');
+for file in $(find $SEARCHPATH -name '*.yaml' -or -name '*.yml');
 do
   echo "1:Replacing all deprecated APIs for K8s 1.16..."
   replace_deprecated_apis $file
