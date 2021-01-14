@@ -62,24 +62,12 @@ function validate {
 
 for file in $SEARCHPATH/*.yaml
 do
-  echo "1:Replacing all deprecated targets..."
+  echo "1:Replacing all deprecated APIs for K8s 1.16..."
   replace_deprecated_apis $file
-  echo "2:Processing $file file..."
+  echo "2:Generating required spec.selector for $file..."
   add_spec-selector $file
   echo "3:Validating file for K8s specified version with kubeval..."
   validate $file
 done
-
-#echo "Step 1: Migration of deprectation APIs for K8s 1.16 done"
-#export -f replace_deprecated_apis
-#find $SEARCHPATH -iname "*.yaml" -exec bash -c 'replace_deprecated_apis' {} \;
-
-#echo "Step 2: "Generating required spec.selector (using the existing template labels as the selector for seamless upgrades)"
-
-
-#echo "Step 3: Starting validation of deployments for K8s 1.16"
-#validate
-
-#echo "Congrats you are ready for K8s 1.16"
 
 #step a= #find $target -iname "*.yaml" -exec ./transmogrify_for_k8s_1.16.sh {} \;
