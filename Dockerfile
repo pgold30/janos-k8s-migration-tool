@@ -17,10 +17,9 @@ RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval
     tar xf kubeval-linux-amd64.tar.gz && \
     cp kubeval /usr/local/bin
 #Install YQ for yaml parsing 
-#RUN wget https://github.com/mikefarah/yq/releases/download/v4.3.2/yq_linux_amd64.tar.gz -O - |\ tar xz && mv ${BINARY} /usr/bin/yq
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.3.2/yq_linux_amd64.tar.gz && \
     tar xf yq_linux_amd64.tar.gz && \
     mv yq_linux_amd64 /usr/local/bin/yq
 # Copy sh script and define default command for the container
-COPY janos_for_k8s_1.16.sh /janos_for_k8s_1.16.sh
-CMD ["./janos_for_k8s_1.16.sh"]
+COPY janos.sh /janos.sh
+CMD ["./janos.sh"]
